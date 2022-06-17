@@ -2525,6 +2525,9 @@ public class JmeArray implements Cloneable, JmeCloneable, Savable, JmeIterable<O
 
         /** Objeto de iteracion {@link java.util.Iterator} interno. */
         private final Iterator<E> it;
+        
+        /** Objeto de la iteracion. */
+        private E itrVal;
 
         /**
          * Genera un constructor <code>Itr</code> donde recorreremos los
@@ -2800,10 +2803,11 @@ public class JmeArray implements Cloneable, JmeCloneable, Savable, JmeIterable<O
         
         @Override
         public E opt() {
-            if (this.it == null) 
-                return null;
+            if (this.it == null)
+                this.itrVal = null;
             else
-                return this.it.next();
+                this.itrVal = this.it.next();
+            return this.itrVal;
         }
         @Override public <T extends Savable> T optSavable() { return this.optSavable(null); }
         @Override public <T extends Savable> T optSavable(T defaultVal) {
@@ -3065,6 +3069,12 @@ public class JmeArray implements Cloneable, JmeCloneable, Savable, JmeIterable<O
             }   
         }        
 
+        @Override
+        public JmeType getType() throws JmeException {
+            if (this.itrVal == null)
+                throw new JmeException("Object is Null.");
+            return JmeType.jmeValueOf(this.itrVal);
+        }
         @Override
         public boolean hasNext() {
             if (this.it == null)

@@ -102,7 +102,7 @@ public final class JmeBufferUtils {
                         JmeBufferUtils.removeCollected);
                 JmeBufferUtils.trackedBuffers.put(info, info);
             } else if (buffer instanceof CharBuffer) {    // char
-                BufferInfo info = new BufferInfo(CharBuffer.class, buffer.capacity(), buffer,
+                BufferInfo info = new BufferInfo(CharBuffer.class, buffer.capacity() * 2, buffer,
                         JmeBufferUtils.removeCollected);
                 JmeBufferUtils.trackedBuffers.put(info, info);
             }
@@ -117,7 +117,7 @@ public final class JmeBufferUtils {
      * @return el nuevo CharBuffer
      */
     public static CharBuffer createCharBuffer(int size) {
-        CharBuffer buf = allocator.allocate(size).order(ByteOrder.nativeOrder()).asCharBuffer();
+        CharBuffer buf = allocator.allocate(2 * size).order(ByteOrder.nativeOrder()).asCharBuffer();
         buf.clear();
         onBufferAllocated(buf);
         return buf;
@@ -136,7 +136,7 @@ public final class JmeBufferUtils {
         if (data == null) {
             return null;
         }
-        CharBuffer buff = createCharBuffer(data.length);
+        CharBuffer buff = createCharBuffer(data.length);        
         buff.clear();
         buff.put(data);
         buff.flip();
@@ -445,7 +445,7 @@ public final class JmeBufferUtils {
      *          Contenido del buffer.
      * @return El buffer generado.
      */
-    public static ByteBuffer createIntBuffer(byte... data) {
+    public static ByteBuffer createByteBuffer(byte... data) {
         if (data == null) {
             return null;
         }

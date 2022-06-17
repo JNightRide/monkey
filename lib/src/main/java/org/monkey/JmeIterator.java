@@ -166,4 +166,7 @@ public interface JmeIterator<E extends Object> extends Iterator<E> {
     
     public DoubleBuffer optDoubleBuffer();    
     public DoubleBuffer optDoubleBuffer(DoubleBuffer defaultValue);
+    
+    // Tipo del objeto
+    public JmeType getType() throws JmeException;
 }

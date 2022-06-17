@@ -69,6 +69,11 @@ dependencies {
     //runtimeOnly 'org.jmonkeyengine:jme3-testdata:' + jme3Version
 }
 
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
