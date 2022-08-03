@@ -8,4 +8,7 @@
  */
 
 rootProject.name = 'monkey'
-include('lib')
+
+/* includess: */
+include('monkey-core')
+include('monkey-lemur')

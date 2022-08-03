@@ -79,7 +79,8 @@ import java.util.regex.Pattern;
  * @version 1.0.0
  * @since 1.0.0
  */
-public class JmeProperties implements Cloneable, JmeCloneable, Savable {
+public class JmeProperties 
+implements Cloneable, JmeCloneable, Savable {
 
     /** Logger de la clase. */
     static final Logger LOG = Logger.getLogger(JmeProperties.class.getName());

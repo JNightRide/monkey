@@ -72,7 +72,8 @@ import java.util.logging.Level;
  * @version 1.0.0
  * @since 1.0.0
  */
-public class JmeArray implements Cloneable, JmeCloneable, Savable, JmeIterable<Object> {
+public class JmeArray 
+implements Cloneable, JmeCloneable, Savable, JmeIterable<Object> {
 
     /** Logger de la clase. */
     static final Logger LOG = Logger.getLogger(JmeArray.class.getName());
@@ -2799,7 +2800,6 @@ public class JmeArray implements Cloneable, JmeCloneable, Savable, JmeIterable<O
             }
             throw wrongValueFormatException("DoubleBuffer", null);
         }
-
         
         @Override
         public E opt() {
