@@ -76,11 +76,12 @@ import java.util.regex.Pattern;
  * <p>Funcion igual que un diccionario({@code Map<?,?>}).
  * 
  * @author wil
- * @version 1.0.0
+ * @version 1.5.0
+ * 
  * @since 1.0.0
  */
-public class JmeProperties 
-implements Cloneable, JmeCloneable, Savable {
+public /*final*/ 
+class JmeProperties implements Cloneable, JmeCloneable, Savable {
 
     /** Logger de la clase. */
     static final Logger LOG = Logger.getLogger(JmeProperties.class.getName());

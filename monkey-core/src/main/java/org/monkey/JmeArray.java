@@ -69,11 +69,13 @@ import java.util.logging.Level;
  * <p>Funcion similar que una lista({@code List<?,?>}).
  * 
  * @author wil
- * @version 1.0.0
+ * @version 1.5.0
+ * 
  * @since 1.0.0
  */
-public class JmeArray 
-implements Cloneable, JmeCloneable, Savable, JmeIterable<Object> {
+public /*final*/ 
+class JmeArray implements Cloneable, JmeCloneable, 
+                            Savable, JmeIterable<Object> {
 
     /** Logger de la clase. */
     static final Logger LOG = Logger.getLogger(JmeArray.class.getName());

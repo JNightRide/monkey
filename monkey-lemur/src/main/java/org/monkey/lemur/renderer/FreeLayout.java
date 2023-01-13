@@ -21,7 +21,7 @@ import org.monkey.lemur.CanvasLayer;
  * resulución de pantalla.
  * 
  * @author wil
- * @version 1.0.5
+ * @version 1.5.1
  * 
  * @since 1.0.0
  */
@@ -52,13 +52,13 @@ private static final Logger LOG = Logger.getLogger(FreeLayout.class.getName());
     
     @Override
     public void calculatePreferredSize(Vector3f size) {
-        //FreeControl control = getNode().getControl(FreeControl.class);
-        //if (control == null) {
-        //    size.set(new Vector3f(1.0F, 1.0F, 0.0F));
-        //} else {
-        //    Vector3f myPref = control.getRect().getSize();
-        //    size.set(myPref);
-        //}
+        FreeControl control = getNode().getControl(FreeControl.class);
+        if (control == null) {
+            size.set(new Vector3f(1.0F, 1.0F, 0.0F));
+        } else {
+            Vector3f myPref = control.getRect().getSize();
+            size.set(myPref);
+        }
     }
 
     @Override
@@ -90,26 +90,38 @@ private static final Logger LOG = Logger.getLogger(FreeLayout.class.getName());
         if (children.containsKey(t))
             removeChild(t);
         
-        final FreeControl newFreeControl = getInstanceControl(t, constraints);
+        Constraints args = null;
+        FreeControl newFreeControl;
+        
+        if (t.getControl(FreeControl.class) != null)  {
+            newFreeControl = t.getControl(FreeControl.class);
+            args = newFreeControl.getConstraints();
+        } else {
+            newFreeControl = new FreeControl(canvasLayer, getInstanceConstraints(constraints));
+        }
+        
         t.addControl(newFreeControl);
         children.put(t, newFreeControl);
         
         if (getGuiControl() != null) {
             getGuiControl().getNode().attachChild(t);
             newFreeControl.attach();
+            
+            if ( args != null ) {
+                Constraints newConstraints = getInstanceConstraints(constraints);
+                if ( !args.equals(newConstraints) ) {
+                    newFreeControl.setConstraints(newConstraints);
+                }
+            }
         }
         
         invalidate();
         return t;
     }
     
-    private <T extends Node> FreeControl getInstanceControl(T t, Object... constraints) {
+    private <T extends Node> Constraints getInstanceConstraints(Object... constraints) {
         if (constraints == null || constraints.length < 1) {
-            FreeControl def = new FreeControl(canvasLayer, Layout.Center, false);
-            Vector3f fpos   = t.getLocalTranslation();
-
-            def.getRect().setLocation(new Vector3f(fpos.getX(), fpos.getY(), 1.0F));
-            return def;
+            return new Constraints();
         }
         
         Boolean bool  = null;
@@ -138,11 +150,7 @@ private static final Logger LOG = Logger.getLogger(FreeLayout.class.getName());
         if (layout == null)
             layout = Layout.Center;
         
-        FreeControl freeControl = new FreeControl(canvasLayer, layout, bool);
-        Vector3f fpos           = t.getLocalTranslation();
-
-        freeControl.getRect().setLocation(new Vector3f(fpos.getX(), fpos.getY(), 1.0F));
-        return freeControl;
+        return new Constraints(bool, layout);
     }
 
     @Override
@@ -171,7 +179,7 @@ private static final Logger LOG = Logger.getLogger(FreeLayout.class.getName());
         if (children.remove(n) == null)
             return;
         
-        n.removeControl(FreeControl.class);
+        /*n.removeControl(FreeControl.class);*/
         n.removeFromParent();
         invalidate();
     }
@@ -191,7 +199,7 @@ private static final Logger LOG = Logger.getLogger(FreeLayout.class.getName());
                 continue;
             
             ((Node) entry.getKey()).removeFromParent();
-            ((Node) entry.getKey()).removeControl(FreeControl.class);
+            /*((Node) entry.getKey()).removeControl(FreeControl.class);*/
         }
         this.children.clear();
     }

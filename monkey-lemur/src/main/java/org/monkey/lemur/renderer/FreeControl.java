@@ -20,7 +20,7 @@ import org.monkey.lemur.CanvasLayer;
  * 
  * @since 1.0.0
  */
-@SuppressWarnings("unchecked")
+@SuppressWarnings(value = {"unchecked"})
 public class FreeControl extends AbstractNodeControl<FreeControl> {
     
     /**
@@ -65,15 +65,14 @@ public class FreeControl extends AbstractNodeControl<FreeControl> {
      * 
      * @param canvasLayer
      *          Lienzo principal donde se visualizaran sus componentes.
-     * @param layout
-     *          Diseño de la posicione en la pantalla.
-     * @param lockscaling 
-     *              Un boolean para determi la escala del componete.
+     * @param constraints 
+     *          Los valor con que se manejara este componentes de la
+     *              interfaz de usuario.
      */
-    public FreeControl(CanvasLayer canvasLayer, Layout layout, boolean lockscaling) {
-        this.lockscaling = lockscaling;
+    public FreeControl(CanvasLayer canvasLayer, Constraints constraints) {
+        this.lockscaling = constraints.getBool();
+        this.layout      = constraints.getLayout();
         this.canvasLayer = canvasLayer;
-        this.layout      = layout;
         this.rect        = new Rect();
     }
     
@@ -129,11 +128,17 @@ public class FreeControl extends AbstractNodeControl<FreeControl> {
         return parent;
     }
 
+    /*
+        Getters.
+    */
     public Layout getLayout() {
         return layout;
     }
     public Rect getRect() {
         return rect;
+    }
+    public Constraints getConstraints() {
+        return new Constraints(lockscaling, layout);
     }
     
     /**
@@ -358,6 +363,20 @@ public class FreeControl extends AbstractNodeControl<FreeControl> {
     public void setLayout(Layout layout) {
         this.layout = layout == null 
                     ? Layout.Center : layout;
+        this.updateGui();
+    }
+    
+    /*
+        Setters.
+    */
+    public void setLockscaling(boolean lockscaling) {
+        this.lockscaling = lockscaling;
+        this.updateGui();
+    }
+    
+    public void setConstraints(Constraints constraints) {
+        this.layout = constraints.getLayout();
+        this.lockscaling = constraints.getBool();
         this.updateGui();
     }
     
