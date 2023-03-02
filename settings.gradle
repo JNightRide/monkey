@@ -10,4 +10,4 @@
 rootProject.name = 'monkey'
 
 /* includes: */
-include('monkey-core')
+include('core')
