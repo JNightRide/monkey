@@ -2233,7 +2233,7 @@ class JmeArray implements Cloneable, JmeCloneable,
     /**
      * Haga un texto JSON bastante impreso de este JmeArray.
      *
-     * <p>Si <pre><code> indentFactor > 0</code></pre> y el {@link JmeArray} solo tiene
+     * <p>Si <pre><code> indentFactor &#62; 0</code></pre> y el {@link JmeArray} solo tiene
      * un elemento, entonces la matriz se generará en una sola línea:
      * <pre><code> [1]</code></pre>
      * </p>
@@ -2281,7 +2281,7 @@ class JmeArray implements Cloneable, JmeCloneable,
     /**
      * Escriba el contenido de JmeArray como texto JSON para un escritor.
      *
-     * <p>Si <pre><code> indentFactor > 0</code></pre> y el {@link JmeArray} solo tiene
+     * <p>Si <pre><code> indentFactor &#62; 0</code></pre> y el {@link JmeArray} solo tiene
      * un elemento, entonces la matriz se generará en una sola línea:
      * <pre><code> [1]</code></pre>
      * </p>

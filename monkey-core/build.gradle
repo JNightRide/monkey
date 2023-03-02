@@ -12,7 +12,7 @@ plugins {
 }
 
 group 'org.monkey'
-version '1.6.0'
+version 'v1.6.5'
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -38,8 +38,14 @@ dependencies {
     implementation "org.jmonkeyengine:jme3-desktop:$jmeVer"
 
     // choose lwjgl 2 or 3
-    implementation "org.jmonkeyengine:jme3-lwjgl:$jmeVer"
+    // implementation "org.jmonkeyengine:jme3-lwjgl:$jmeVer"
     // implementation "org.jmonkeyengine:jme3-lwjgl3:$jmeVer"
+
+    // https://mvnrepository.com/artifact/org.jdom/jdom2
+    implementation group: 'org.jdom', name: 'jdom2', version: '2.0.6.1'
+
+    // https://mvnrepository.com/artifact/org.json/json
+    implementation group: 'org.json', name: 'json', version: '20220924'
 }
 
 java {

@@ -2716,7 +2716,7 @@ class JmeProperties implements Cloneable, JmeCloneable, Savable {
     /**
      * Haga un texto JSON bastante impreso de este JmeProperties.
      *
-     * <p>Si <pre><code> indentFactor > 0</code></pre> y el {@link JmeProperties}
+     * <p>Si <pre><code> indentFactor &#62; 0</code></pre> y el {@link JmeProperties}
      * tiene solo una clave, entonces el objeto se generará en una sola línea:
      * <pre><code>{"clave": 1}</code></pre>
      *
@@ -2884,7 +2884,7 @@ class JmeProperties implements Cloneable, JmeCloneable, Savable {
     /**
      * Escriba el contenido de JmeProperties como texto JSON para un escritor.
      *
-     * <p>Si <pre><code> indentFactor > 0</code></pre> y el {@link JmeProperties}
+     * <p>Si <pre><code> indentFactor &#62; 0</code></pre> y el {@link JmeProperties}
      * tiene solo una clave, entonces el objeto se generará en una sola línea:
      * <pre><code> {"clave": 1}</code></pre>
      *

@@ -9,6 +9,5 @@
 
 rootProject.name = 'monkey'
 
-/* includess: */
+/* includes: */
 include('monkey-core')
-include('monkey-lemur')
