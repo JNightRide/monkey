@@ -48,7 +48,7 @@ en formato JSON(https://github.com/stleary/JSON-java) con los siguientes objetos
 2. JsonExporter
 
 **NOTA:** El módulo **monkey-lemur** se a traslado a un nuevo repositorio
-si dese sequir utilizando vea (https://github.com/JNightRide/monkey-lemur/tree/master)
+si dese seguir utilizando vea (https://github.com/JNightRide/monkey-lemur/tree/master)
 
 
 Y eso es todo. Tu juego ya puede guadar sus datos en disco y/o contar con una intrefaz escalable.
