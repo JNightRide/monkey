@@ -40,15 +40,4 @@ public class MonkeyCore {
 }
 ```
 
-## Version v1.6.5
-Con esta nueva version se puede exportar e importar nuestros objeto **Savable**
-en formato JSON(https://github.com/stleary/JSON-java) con los siguientes objetos.
-
-1. JsonImporter
-2. JsonExporter
-
-**NOTA:** El módulo **monkey-lemur** se a traslado a un nuevo repositorio
-si dese seguir utilizando vea (https://github.com/JNightRide/monkey-lemur/tree/master)
-
-
 Y eso es todo. Tu juego ya puede guadar sus datos en disco y/o contar con una intrefaz escalable.
